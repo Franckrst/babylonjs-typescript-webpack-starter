@@ -1,3 +1,4 @@
+/*
 import { Game } from './game';
 import 'babylonjs-materials';
 import 'babylonjs-loaders';
@@ -9,4 +10,11 @@ window.addEventListener('DOMContentLoaded', () => {
   let game = new Game('renderCanvas');
   game.createScene();
   game.animate();
+});
+ */
+import { Map } from './map';
+
+window.addEventListener('DOMContentLoaded', () => {
+  let map : Map = new Map('renderCanvas');
+  map.render();
 });
