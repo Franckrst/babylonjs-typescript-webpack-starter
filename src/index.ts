@@ -23,6 +23,8 @@ window.addEventListener('DOMContentLoaded', () => {
     let canvas : HTMLCanvasElement = <HTMLCanvasElement>document.getElementById('renderCanvas')
     let engine : BABYLON.Engine = new BABYLON.Engine(canvas, true);
     let scene : BABYLON.Scene= new BABYLON.Scene(engine);
+    scene.gravity = new BABYLON.Vector3(0, -0.5, 0);
+    scene.collisionsEnabled = true;
     let map : Map = new Map(scene);
     let player : Player = new Player(scene, 'him', 'assets/babylon/','dude.babylon');
     player.load();

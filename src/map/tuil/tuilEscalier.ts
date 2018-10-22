@@ -20,6 +20,7 @@ export class TuilEscalier extends Tuil {
         b.scaling.y = 1.8;
         b.scaling.z = 0.2;
         b.material = material;
+        b.checkCollisions = true;
         this.meshs.push(b);
 
         let c = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
@@ -41,6 +42,7 @@ export class TuilEscalier extends Tuil {
         e.scaling.y = 1.4;
         e.scaling.z = 0.2;
         e.material = material;
+        e.checkCollisions = true;
         this.meshs.push(e);
 
         return this;

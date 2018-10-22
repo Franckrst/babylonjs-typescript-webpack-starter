@@ -12,7 +12,7 @@ function animatActor()
 		if(VitessePerso == 2.5) VitesseAnim = 5;
 		console.log('azezae');
 		scene.beginAnimation(skeletonsPlayer[0], (100*start)/totalFrame, (100*end)/totalFrame, true, VitesseAnim);
-		meshPlayer.position = new BABYLON.Vector3(parseFloat(meshPlayer.position.x), parseFloat(meshPlayer.position.y), parseFloat(meshPlayer.position.z));
+		//meshPlayer.position = new BABYLON.Vector3(parseFloat(meshPlayer.position.x), parseFloat(meshPlayer.position.y), parseFloat(meshPlayer.position.z));
 		PlayAnnimation = true;
 	}
 	if (keys.avancer == 1){	// En avant		
@@ -40,7 +40,7 @@ function createScene() {
     scene = new BABYLON.Scene(engine);
 
     //Active gravity and collision
-	scene.gravity = new BABYLON.Vector3(0, -0.5, 0);	
+	//scene.gravity = new BABYLON.Vector3(0, -0.5, 0);
     scene.collisionsEnabled = true;	
    
     // Light directional
@@ -95,8 +95,6 @@ function createScene() {
 		scene.beginAnimation(skeletons[0], 100*start/totalFrame, 100*end/totalFrame, true, vitesse);
 		
 		meshPlayer.checkCollisions = true;
-		meshPlayer.ellipsoid = new BABYLON.Vector3(0.5, 1.0, 0.5);
-		meshPlayer.ellipsoidOffset = new BABYLON.Vector3(0, 1.9, 0);
 		//meshPlayer.applyGravity = true;
 	});		
 	

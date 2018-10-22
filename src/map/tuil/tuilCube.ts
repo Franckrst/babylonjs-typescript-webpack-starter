@@ -12,8 +12,9 @@ export class TuilCube extends Tuil {
         this._material.diffuseColor = new BABYLON.Color3(color, color, color);
         this._cube = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
         this._cube.position = this._vector;
-        //shape2.position.y = Math.random() * (0.5 - 0) + 0;
+        //this._cube.position.y = Math.random() * (0.5 - 0) + 0;
         this._cube.material = this._material;
+        this._cube.checkCollisions = true;
         console.log('cell ++');
         this.meshs.push(this._cube);
         return this;
