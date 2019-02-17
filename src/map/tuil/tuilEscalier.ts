@@ -11,13 +11,13 @@ export class TuilEscalier extends Tuil {
         let a = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
         a.position = this._vector.add(new BABYLON.Vector3(0,0.5,0.4));
         a.material = material;
-        a.scaling.y = 2;
+        a.scaling.y = 0.6;
         a.scaling.z = 0.2;
         this.meshs.push(a);
 
         let b = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
         b.position = this._vector.add(new BABYLON.Vector3(0,0.5,0.2));
-        b.scaling.y = 1.8;
+        b.scaling.y = 1.2;
         b.scaling.z = 0.2;
         b.material = material;
         b.checkCollisions = true;
@@ -25,21 +25,21 @@ export class TuilEscalier extends Tuil {
 
         let c = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
         c.position = this._vector.add(new BABYLON.Vector3(0,0.5,0.0));
-        c.scaling.y = 1.6;
+        c.scaling.y = 1.4;
         c.scaling.z = 0.2;
         c.material = material;
         this.meshs.push(c);
 
         let d = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
         d.position = this._vector.add(new BABYLON.Vector3(0,0.5,-0.2));
-        d.scaling.y = 1.4;
+        d.scaling.y = 1.6;
         d.scaling.z = 0.2;
         d.material = material;
         this.meshs.push(d);
 
         let e = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
         e.position = this._vector.add(new BABYLON.Vector3(0,0.5,-0.4));
-        e.scaling.y = 1.4;
+        e.scaling.y = 1.7;
         e.scaling.z = 0.2;
         e.material = material;
         e.checkCollisions = true;

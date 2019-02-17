@@ -34,7 +34,7 @@ export class Map {
             let collOffset : number = 0;
             this.cells[lineOffset] = [];
             line.forEach((cell : IMapCell) => {
-                this.cells[lineOffset].push(new Cell(this._scene, cell, new BABYLON.Vector3(lineOffset, 0 , collOffset)).render());
+                this.cells[lineOffset].push(new Cell(this._scene, cell, new BABYLON.Vector3(lineOffset, Math.random()/7 , collOffset)).render());
                 //this._cell.push(new Cell(this._scene, cell, new BABYLON.Vector3(lineOffset, 0 , collOffset)).render());
                 collOffset ++;
             });
