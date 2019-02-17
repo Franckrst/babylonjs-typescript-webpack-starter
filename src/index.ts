@@ -17,6 +17,8 @@ import {Player} from "./Player/player";
 import * as BABYLON from "babylonjs";
 import {ManhattenHeuristic} from "./AStar/Heuristics/ManhattenHeuristic";
 import {AStar} from "./AStar/AStar";
+import Vector3 = BABYLON.Vector3;
+import {Interaction} from "./map/Interaction";
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -26,8 +28,9 @@ window.addEventListener('DOMContentLoaded', () => {
     scene.gravity = new BABYLON.Vector3(0, -0.5, 0);
     scene.collisionsEnabled = true;
     let map : Map = new Map(scene);
-    let player : Player = new Player(scene, 'him', 'assets/babylon/','dude.babylon');
+    let player : Player = new Player(scene, 'him', 'assets/babylon/','dude.babylon',new Vector3(1,0.7,4));
     player.load();
+    let interaction : Interaction = new Interaction(map,player);
     let camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, Math.PI / 4, 30, BABYLON.Vector3.Zero(), this._scene);
     camera.attachControl(canvas, true);
     map.build().then(()=>{

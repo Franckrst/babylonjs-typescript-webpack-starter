@@ -1,14 +1,16 @@
 import * as BABYLON from 'babylonjs';
-import {IMapCell, IMapDescriptor, IMapLine, IMapTuil} from "./IMapDescriptor";
+import {IMapCell, IMapDescriptor, IMapLine, IMapTuil} from "./interfaces/IMapDescriptor";
 import axios from 'axios';
 import {Cell} from "./cell";
 import {bound} from "../tools/decorators/bound";
+import {IInterationEvent} from "./interfaces/IInterationEvent";
 
 export class Map {
 
-    private _camera: BABYLON.ArcRotateCamera;
+    public interactionEvent : IInterationEvent;
+
     private _light: BABYLON.HemisphericLight;
-    private _cell : Cell[] = [];
+    public cells : Cell[][] = [];
 
     constructor(private _scene : BABYLON.Scene) {
         // Create canvas and engine
@@ -29,21 +31,37 @@ export class Map {
     public load(map_json : IMapDescriptor) : void {
         let lineOffset : number = 0;
         map_json.forEach((line : IMapLine) => {
-            lineOffset ++;
             let collOffset : number = 0;
+            this.cells[lineOffset] = [];
             line.forEach((cell : IMapCell) => {
-                this._cell.push(new Cell(this._scene, cell, new BABYLON.Vector3(lineOffset, 0 , collOffset)).render());
+                this.cells[lineOffset].push(new Cell(this._scene, cell, new BABYLON.Vector3(lineOffset, 0 , collOffset)).render());
+                //this._cell.push(new Cell(this._scene, cell, new BABYLON.Vector3(lineOffset, 0 , collOffset)).render());
                 collOffset ++;
-            })
+            });
+            lineOffset ++;
         });
+        console.log(this.cells);
     }
 
     @bound
-    private onPointerDown (evt: PointerEvent, pickInfo: BABYLON.PickingInfo, type: BABYLON.PointerEventTypes){
+    private onPointerDown (evt: PointerEvent, pickInfo : BABYLON.PickingInfo, type: BABYLON.PointerEventTypes){
         if(pickInfo.hit){
-            console.log(this._cell.filter((cell : Cell) =>  cell.pick(pickInfo)));
+            for(const cellsKey in this.cells){
+                for(const cellKey in this.cells[cellsKey]){
+                    if(this.cells[cellsKey][cellKey].pick(pickInfo)){
+                        return (this.interactionEvent)?this.interactionEvent.click(this.cells[cellsKey][cellKey]):null;
+                    }
+                }
+            }
         }
 
+    }
+
+    public getMovingArr() : number[][]{
+        console.log(this.cells);
+        return this.cells.map((cells)=>{
+            return cells.map((cell)=>cell.canMoveOn);
+        })
     }
 
 }

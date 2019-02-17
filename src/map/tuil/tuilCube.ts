@@ -9,7 +9,7 @@ export class TuilCube extends Tuil {
     public render() : this {
         this._material = new BABYLON.StandardMaterial("wall", this._scene);
         let color : number = Math.random();
-        this._material.diffuseColor = new BABYLON.Color3(color, color, color);
+        this._material.diffuseColor = this.color;
         this._cube = BABYLON.Mesh.CreateBox('scene_elem', 1, this._scene);
         this._cube.position = this._vector;
         //this._cube.position.y = Math.random() * (0.5 - 0) + 0;

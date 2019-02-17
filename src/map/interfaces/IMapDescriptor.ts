@@ -6,4 +6,5 @@ export interface IMapTuil {
     x ?: number;
     y ?: number;
     z ?: number;
+    color ?: number[];
 }

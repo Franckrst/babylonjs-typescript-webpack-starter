@@ -1,8 +1,10 @@
-import Vector3 = BABYLON.Vector3;
 import {KeyMapEvent, KeyMapSingleton} from "../ui/keyMap.singleton";
+import * as BABYLON from "babylonjs";
+import Vector3 = BABYLON.Vector3;
+import {IMapObj} from "../map/interfaces/IMapObj";
 
 
-export class Player {
+export class Player implements IMapObj{
 
     //(meshes: AbstractMesh[], particleSystems: ParticleSystem[], skeletons: Skeleton[], animationGroups: AnimationGroup[])
 
@@ -14,7 +16,8 @@ export class Player {
     constructor(protected _scene : BABYLON.Scene ,
                 public id : string,
                 public path : string,
-                public file : string) {
+                public file : string,
+                public vector : BABYLON.Vector3) {
         KeyMapSingleton.getInstance().add(KeyMapEvent.KEY_DOWN, (event)=>{
 
             let forward = new BABYLON.Vector3(0,0.5, 0.1);
@@ -29,7 +32,7 @@ export class Player {
         BABYLON.SceneLoader.ImportMesh(this.id, this.path, this.file, this._scene, (meshes, particleSystems, skeletons, animationGroups) => {
             this.meshes = meshes;
             this.meshes[0].scaling = new Vector3(0.02,0.02,0.02);
-            this.meshes[0].position = new Vector3(1,0.7,4);
+            this.meshes[0].position = this.vector;
             this.particleSystems = particleSystems;
             this.skeletons = skeletons;
             this.animationGroups = animationGroups;

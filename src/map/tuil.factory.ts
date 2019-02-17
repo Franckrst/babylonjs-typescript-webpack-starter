@@ -1,5 +1,5 @@
 import {Tuil} from "./tuil";
-import {IMapCell, IMapTuil} from "./IMapDescriptor";
+import {IMapCell, IMapTuil} from "./interfaces/IMapDescriptor";
 import {TuilCube} from "./tuil/tuilCube";
 import * as BABYLON from "babylonjs";
 import {TuilEscalier} from "./tuil/tuilEscalier";
