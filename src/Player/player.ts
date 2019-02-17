@@ -20,7 +20,7 @@ export class Player implements IMapObj{
                 public vector : BABYLON.Vector3) {
         KeyMapSingleton.getInstance().add(KeyMapEvent.KEY_DOWN, (event)=>{
 
-            let forward = new BABYLON.Vector3(0,9.81*1.5, 0.1);
+            let forward = new BABYLON.Vector3(0,0.5, 0.1);
             forward = forward.negate();
             this.meshes[0].moveWithCollisions(forward);
             console.log('==>',event.keyCode == 90 )
