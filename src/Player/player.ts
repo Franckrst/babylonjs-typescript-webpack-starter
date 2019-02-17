@@ -39,8 +39,9 @@ export class Player implements IMapObj{
 
             this.meshes[0].isPickable = false;
             this.meshes[0].checkCollisions = true;
-            this.meshes[0].ellipsoid = new BABYLON.Vector3(0.5, 1.0, 0.5);
-            this.meshes[0].ellipsoidOffset = new BABYLON.Vector3(0, 1.0, 0);
+            const curiousValue : number = 15;
+            this.meshes[0].ellipsoid = new BABYLON.Vector3(0.5, curiousValue, 0.5);
+            this.meshes[0].ellipsoidOffset = new BABYLON.Vector3(0, curiousValue, 0);
             this.walk();
         });
         return this;
