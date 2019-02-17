@@ -20,7 +20,7 @@ export class Player implements IMapObj{
                 public vector : BABYLON.Vector3) {
         KeyMapSingleton.getInstance().add(KeyMapEvent.KEY_DOWN, (event)=>{
 
-            let forward = new BABYLON.Vector3(0,0.5, 0.1);
+            let forward = new BABYLON.Vector3(0,9.81*1.5, 0.1);
             forward = forward.negate();
             this.meshes[0].moveWithCollisions(forward);
             console.log('==>',event.keyCode == 90 )
@@ -39,8 +39,9 @@ export class Player implements IMapObj{
 
             this.meshes[0].isPickable = false;
             this.meshes[0].checkCollisions = true;
-            this.meshes[0].ellipsoid = new BABYLON.Vector3(0.5, 1.0, 0.5);
-            this.meshes[0].ellipsoidOffset = new BABYLON.Vector3(0, 1.0, 0);
+            const curiousValue : number = 15;
+            this.meshes[0].ellipsoid = new BABYLON.Vector3(0.5, curiousValue, 0.5);
+            this.meshes[0].ellipsoidOffset = new BABYLON.Vector3(0, curiousValue, 0);
             this.walk();
         });
         return this;
