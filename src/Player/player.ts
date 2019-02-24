@@ -40,11 +40,28 @@ export class Player implements IMapObj{
             this.meshes[0].isPickable = false;
             this.meshes[0].checkCollisions = true;
             const curiousValue : number = 15;
-            this.meshes[0].ellipsoid = new BABYLON.Vector3(0.5, curiousValue, 0.5);
-            this.meshes[0].ellipsoidOffset = new BABYLON.Vector3(0, curiousValue, 0);
+            this.meshes[0].ellipsoid = new BABYLON.Vector3(20, curiousValue, 24);
+            this.meshes[0].ellipsoidOffset = new BABYLON.Vector3(4, curiousValue, 0);
+            this.drawEllipsoid(this.meshes[0]);
             this.walk();
         });
         return this;
+    }
+    public drawEllipsoid(mesh) {
+        mesh.computeWorldMatrix(true);
+        const ellipsoidMat = new BABYLON.StandardMaterial("__ellipsoidMat__", mesh.getScene());
+//                ellipsoidMat.wireframe = true;
+        ellipsoidMat.emissiveColor = BABYLON.Color3.Green();
+        ellipsoidMat.specularColor = BABYLON.Color3.Black();
+        const ellipsoid = BABYLON.Mesh.CreateSphere("__ellipsoid__", 9, 1, mesh.getScene());
+        ellipsoid.scaling = mesh.ellipsoid.clone();
+        ellipsoid.position.y += mesh.ellipsoidOffset.y;
+        ellipsoid.scaling.y *= 2;
+        ellipsoid.scaling.x *= 2;
+        ellipsoid.scaling.z *= 2;
+        ellipsoid.material = ellipsoidMat;
+        ellipsoid.parent = mesh;
+        ellipsoid.computeWorldMatrix(true);
     }
 
 

@@ -21,7 +21,7 @@ export class TuilCube extends Tuil {
     }
 
     public setPicked (val : boolean) : this {
-        this._material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+        this._material.diffuseColor = new BABYLON.Color3(0.3, 0.3, 0.3);
         return super.setPicked(val);
     }
 }

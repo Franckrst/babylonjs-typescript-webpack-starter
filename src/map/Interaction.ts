@@ -35,10 +35,10 @@ export class Interaction implements IInterationEvent {
             this.map.getMovingArr());
         console.log(obj.vector.z, obj.vector.x);
         let paths : GraphNode[]= astart.path(
-            astart.getNode(obj.vector.z, obj.vector.x),
-            astart.getNode(vector.z, vector.x));
+            astart.getNode(obj.vector.x, obj.vector.z),
+            astart.getNode(vector.x, vector.z));
         paths.forEach((path)=>{
-            this.map.cells[path.z][path.y].setActive(true);
+            this.map.cells[path.x][path.y].setActive(true);
         });
         console.log(paths);
 
